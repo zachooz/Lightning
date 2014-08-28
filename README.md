@@ -1,4 +1,4 @@
 Lightning
 =========
 
-Sample code for Lowell High School Lightning Assignment
+Click to fire lightning from clouds!!
