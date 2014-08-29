@@ -1,19 +1,3 @@
-import processing.core.*; 
-import processing.data.*; 
-import processing.event.*; 
-import processing.opengl.*; 
-
-import java.util.HashMap; 
-import java.util.ArrayList; 
-import java.io.File; 
-import java.io.BufferedReader; 
-import java.io.PrintWriter; 
-import java.io.InputStream; 
-import java.io.OutputStream; 
-import java.io.IOException; 
-
-public class Lightning extends PApplet {
-
 int[] ellipseX = new int[5000];
 aLightning[] theLightning = new aLightning[100];
 int lightningCount = 0;
@@ -27,13 +11,13 @@ public class aLightning {
 	
 }
 
-public void setup(){
+void setup(){
   size(500,500);
   strokeWeight (5);
   background(0, 0, 153);
   frameRate(10);
 }
-public void draw(){
+void draw(){
   noStroke();
   fill(131,131,131);
   background(0, 0, 153);
@@ -68,19 +52,11 @@ public void draw(){
   }
 
 }
-public void mousePressed(){
+void mousePressed(){
   fill(255,255,0);
   theLightning[lightningCount] = new aLightning();
   lightningCount++;
   System.out.println("clicked");
 
 }
-  static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "Lightning" };
-    if (passedArgs != null) {
-      PApplet.main(concat(appletArgs, passedArgs));
-    } else {
-      PApplet.main(appletArgs);
-    }
-  }
-}
+

@@ -23,30 +23,29 @@ void draw(){
   background(0, 0, 153);
 
   for(int i = 0; i<theLightning.length; i++){
-  	if(theLightning[i]!=null){
-			int r=255;
-			int g=255;
-			int b=0;
-		while(theLightning[i].startY < height){
-			r-=1;
-			b-=1;
-			stroke(r,g,b);
-			line(theLightning[i].startX, theLightning[i].startY, theLightning[i].endX, theLightning[i].endY);
-			theLightning[i].startX = theLightning[i].endX;
-			theLightning[i].startY = theLightning[i].endY;
+		if(theLightning[i]!=null){
+				int r=255;
+				int g=255;
+				int b=0;
+			while(theLightning[i].startY < height){
+				r-=1;
+				b-=1;
+				stroke(r,g,b);
+				line(theLightning[i].startX, theLightning[i].startY, theLightning[i].endX, theLightning[i].endY);
+				theLightning[i].startX = theLightning[i].endX;
+				theLightning[i].startY = theLightning[i].endY;
+				theLightning[i].endX =  theLightning[i].startX + (int) (Math.random()*6 - 3);
+				theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*10);
+				if(theLightning[i].startY >= height){
+				}
+				
+			}
+			theLightning[i].startY = 0;
+			theLightning[i].startX = theLightning[i].originalX;
 			theLightning[i].endX =  theLightning[i].startX + (int) (Math.random()*6 - 3);
 			theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*10);
-			if(theLightning[i].startY >= height){
-			}
-			
 		}
-		theLightning[i].startY = 0;
-		theLightning[i].startX = theLightning[i].originalX;
-		theLightning[i].endX =  theLightning[i].startX + (int) (Math.random()*6 - 3);
-		theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*10);
 	}
-	}
-  }
   for(int i = 0; i<ellipseX.length; i++){
 	noStroke();
     ellipse(i*100, 0, 180, 180);
