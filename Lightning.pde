@@ -20,7 +20,7 @@ void setup(){
   size(500,500);
   strokeWeight (5);
   background(0, 0, 153);
-  frameRate(10);
+  frameRate(500);
 }
 void draw(){
   noStroke();
