@@ -1,68 +1,61 @@
 int[] ellipseX = new int[5000];
-Lightning[] theLightning = new Lightning[100];
+aLightning[] theLightning = new aLightning[100];
 int lightningCount = 0;
-int backgroundR = 0;
-int backgroundG = 50;
-int backgroundB = 125;
 
-public class Lightning {
-	int[][] ligthningParts = new int[100][4];
-	int partCount = 0;
-	int startX = (int) (Math.random()*width);
+public class aLightning {
+	int originalX = mouseX;
+	int startX = mouseX;
 	int startY = 0;
-	int endX = this.startX + (int) (Math.random()*width * 51 - 25);
-	int endY = this.startY + (int) (Math.random()*width * 50);
-
-	void createLightning(){
-		while(this.endY<height){
-			this.ligthningParts[partCount][0] = this.startX;
-			this.ligthningParts[partCount][1] = this.startY;
-			this.ligthningParts[partCount][2] = this.endX;
-			this.ligthningParts[partCount][3] = this.endY;
-			this.partCount++;
-			this.newLine();
-			System.out.println("creating");
-		}
-
-	}
-	void newLine(){
-		this.startX = this.endX;
-		this.startY = this.endY;
-		this.endX = this.startX + (int) (Math.random()*width * 51 - 25);
-		this.endY = this.startX + (int) (Math.random()*width * 50);
-	}
-	void drawLighting(){
-		for(int i = 0; i<100; i++){
-			if(ligthningParts[i]!=null){
-				fill(255, 255, 100);
-				line(ligthningParts[i][0],ligthningParts[i][1],ligthningParts[i][2],ligthningParts[i][3]);
-			}
-		}
-		
-	}
+	int endX = startX + (int) (Math.random()*2 - 1);
+	int endY = startY + (int) (Math.random()*10);
+	
 }
 
 void setup(){
   size(500,500);
+  strokeWeight (5);
+  background(0, 0, 153);
+  frameRate(10);
 }
 void draw(){
-  background(backgroundR, backgroundG, backgroundB);
   noStroke();
   fill(131,131,131);
-  for(int i = 0; i<ellipseX.length; i++){
-    ellipse(i*100, 0, 180, 180);
-  }
+  background(0, 0, 153);
+
   for(int i = 0; i<theLightning.length; i++){
   	if(theLightning[i]!=null){
-  		theLightning[i].drawLighting();
+			int r=255;
+			int g=255;
+			int b=0;
+		while(theLightning[i].startY < height){
+			r-=1;
+			b-=1;
+			stroke(r,g,b);
+			line(theLightning[i].startX, theLightning[i].startY, theLightning[i].endX, theLightning[i].endY);
+			theLightning[i].startX = theLightning[i].endX;
+			theLightning[i].startY = theLightning[i].endY;
+			theLightning[i].endX =  theLightning[i].startX + (int) (Math.random()*6 - 3);
+			theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*10);
+			if(theLightning[i].startY >= height){
+			}
+			
+		}
+		theLightning[i].startY = 0;
+		theLightning[i].startX = theLightning[i].originalX;
+		theLightning[i].endX =  theLightning[i].startX + (int) (Math.random()*6 - 3);
+		theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*10);
 	}
+	}
+  }
+  for(int i = 0; i<ellipseX.length; i++){
+	noStroke();
+    ellipse(i*100, 0, 180, 180);
   }
 
 }
 void mousePressed(){
   fill(255,255,0);
-  theLightning[lightningCount] = new Lightning();
-  theLightning[lightningCount].createLightning();
+  theLightning[lightningCount] = new aLightning();
   lightningCount++;
   System.out.println("clicked");
 
