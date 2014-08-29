@@ -18,7 +18,7 @@ public class aLightning {
 
 void setup(){
   size(500,500);
-  strokeWeight (5);
+  strokeWeight (20);
   background(0, 0, 153);
   frameRate(500);
 }
