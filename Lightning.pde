@@ -18,14 +18,14 @@ public class aLightning {
 
 void setup(){
   size(500,500);
-  strokeWeight (20);
+  strokeWeight (1);
   background(0, 0, 153);
   frameRate(500);
 }
 void draw(){
   noStroke();
   fill(131,131,131);
-  background(0, 0, 153);
+  background(0, 0, 0);
 
   for(int i = 0; i<theLightning.length; i++){
 		if(theLightning[i]!=null){
