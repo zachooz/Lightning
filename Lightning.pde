@@ -2,7 +2,6 @@ int[] ellipseX = new int[5000];
 aLightning[] theLightning = new aLightning[2000];
 int lightningCount = 0;
 
-
 public class aLightning {
 	int originalX = mouseX;
 	int startX = mouseX;
@@ -17,24 +16,27 @@ public class aLightning {
 	int r=(int) (Math.random() * 255);
 	int g=(int) (Math.random() * 255);
 	int b=(int) (Math.random() * 255);
+	int theAlpha = 255;
 }
 
 void setup(){
   size(500,500);
   strokeWeight (1);
-  background(0, 0, 153);
-  frameRate(999999999);
+  background(0, 0, 0);
+  frameRate(10);
 }
 void draw(){
   noStroke();
-  fill(131,131,131);
-  background(0, 0, 0);
-
+  fill(0,0,0,50);
+  rect(-500,-500,10000,1000,80);
+  fill(125, 125, 125);
+  
   for(int i = 0; i<theLightning.length; i++){
 		if(theLightning[i]!=null){
 				theLightning[i].split = true;
 			while(theLightning[i].startY < height || theLightning[i].startY2 < height){
-				stroke(theLightning[i].r,theLightning[i].g,theLightning[i].b);
+				stroke(theLightning[i].r,theLightning[i].g,theLightning[i].b, theLightning[i].theAlpha);
+				fill(theLightning[i].r,theLightning[i].g,theLightning[i].b);
 				line(theLightning[i].startX, theLightning[i].startY, theLightning[i].endX, theLightning[i].endY);
 				theLightning[i].startX = theLightning[i].endX;
 				theLightning[i].startY = theLightning[i].endY;
@@ -75,4 +77,6 @@ void mousePressed(){
   if(lightningCount>= 2000){
   	lightningCount = 0;
   }
+  fill(255,255,255,50);
+  rect(-500,-500,10000,1000,50);
 }
