@@ -39,7 +39,7 @@ public void setup(){
   size(500,500);
   strokeWeight (1);
   background(0, 0, 153);
-  frameRate(500);
+  frameRate(999999999);
 }
 public void draw(){
   noStroke();
@@ -88,11 +88,9 @@ public void mousePressed(){
   fill(255,255,0);
   theLightning[lightningCount] = new aLightning();
   lightningCount++;
-  if(lightningCount>= 100){
+  if(lightningCount>= 2000){
   	lightningCount = 0;
   }
-  System.out.println("clicked");
-
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Lightning" };
