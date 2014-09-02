@@ -3,20 +3,24 @@ aLightning[] theLightning = new aLightning[2000];
 int lightningCount = 0;
 
 public class aLightning {
-	int originalX = mouseX;
-	int startX = mouseX;
-	int startY = 0;
-	int endX = startX;
-	int endY = startY + (int) (Math.random()*10);
-	int startX2 = mouseX;
-	int startY2 = 0;
-	int endX2 = startX + (int) (Math.random()*30 - 15);
-	int endY2 = startY + (int) (Math.random()*10);
-	boolean split = true;
-	int r=(int) (Math.random() * 255);
-	int g=(int) (Math.random() * 255);
-	int b=(int) (Math.random() * 255);
-	int theAlpha = 255;
+	int originalX, startX, startY, endX, endY, startX2, startY2, endX2, endY2, r, g, b, theAlpha;
+	boolean split;
+	aLightning(int originalX, int startX, int startY, int endX, int endY, int startX2, int startY2, int endX2, int endY2, boolean split, int r, int g, int b, int theAlpha){
+		this.originalX = originalX;
+		this.startX = startX;
+		this.startY = startY;
+		this.endX = endX;
+		this.endY = endY;
+		this.startX2 = mouseX;
+		this.startY2 = startY2;
+		this.endX2 = endX2;
+		this.endY2 = endY2;
+		this.split = split;
+		this.r=r;
+		this.g=g;
+		this.b=b;
+		this.theAlpha = theAlpha;
+	}
 }
 
 void setup(){
@@ -72,7 +76,7 @@ void draw(){
 }
 void mousePressed(){
   fill(255,255,0);
-  theLightning[lightningCount] = new aLightning();
+  theLightning[lightningCount] = new aLightning(mouseX, mouseX, 0, mouseX, (int) (Math.random()*10), mouseX, 0, mouseX + (int) (Math.random()*30 - 15),(int) (Math.random()*10), true,(int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255), 255);
   lightningCount++;
   if(lightningCount>= 2000){
   	lightningCount = 0;
