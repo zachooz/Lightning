@@ -1,4 +1,4 @@
-int[] ellipseX = new int[5000];
+int[] ellipseX = new int[10];
 aLightning[] theLightning = new aLightning[2000];
 int lightningCount = 0;
 
@@ -68,7 +68,7 @@ void draw(){
 			theLightning[i].endY = theLightning[i].startY + (int) (Math.random()*20);
 		}
 	}
-  for(int i = 0; i<ellipseX.length; i++){
+  for(int i = 0; i*100<=width+1; i++){
 	noStroke();
     ellipse(i*100, 0, 180, 180);
   }
